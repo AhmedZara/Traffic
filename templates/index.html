@@ -12,24 +12,23 @@
   </head>
   <body>
     <div class = 'container'>
+      <h1>LED</h1>
       <section id = "redLED">
-        <button class="btn btn-success" v-on:click ="onLED">ON</button>
-        <button class="btn btn-danger" v-on:click ="offLED">OFF</button>
+        <button class="btn btn-success" v-on:click ="redonLED">ON</button>
+        <button class="btn btn-danger" v-on:click ="redoffLED">OFF</button>
       </section>
-    </div>
-    <div class = 'container'>
+    
+  
       <section id = "yellowLED">
-        <button class="btn btn-success" v-on:click ="onLED">ON</button>
-        <button class="btn btn-danger" v-on:click ="offLED">OFF</button>
+        <button class="btn btn-success" v-on:click ="yellowonLED">ON</button>
+        <button class="btn btn-danger" v-on:click ="yellowoffLED">OFF</button>
       </section>
-    </div>
-    <div class = 'container'>
       <section id = "greenLED">
-        <button class="btn btn-success" v-on:click ="onLED">ON</button>
-        <button class="btn btn-danger" v-on:click ="offLED">OFF</button>
+        <button class="btn btn-success" v-on:click ="greenonLED">ON</button>
+        <button class="btn btn-danger" v-on:click ="greenoffLED">OFF</button>
       </section>
     </div>
-    <h1>LED</h1>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -40,12 +39,12 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       var redledApp = new Vue ({
-        el:'#LED',
+        el:'#redLED',
         data: {
           message:'LED OFF'
         },
         methods: {
-          onRED:function(){
+          redonLED:function(){
             console.log("ON was called")
             axios.post('/redpin_on', {
             pin:15,
@@ -57,7 +56,7 @@
           console.log(error);
            });
           },
-          offRED: function(){
+          redoffLED: function(){
             console.log("Off was called")
             axios.post('/redpin_off', {
             pin:15,
@@ -74,12 +73,12 @@
     </script>
     <script>
       var yellowledApp = new Vue ({
-        el:'#LED',
+        el:'#yellowLED',
         data: {
           message:'LED OFF'
         },
         methods: {
-          onYELLOW:function(){
+          yellowonLED:function(){
             console.log("ON was called")
             axios.post('/yellowpin_on', {
             pin:17,
@@ -91,7 +90,7 @@
           console.log(error);
            });
           },
-          offYELLOW: function(){
+          yellowoffLED: function(){
             console.log("Off was called")
             axios.post('/yellowpin_off', {
             pin:17,
@@ -108,12 +107,12 @@
     </script>
     <script>
       var greenledApp = new Vue ({
-        el:'#LED',
+        el:'#greenLED',
         data: {
           message:'LED OFF'
         },
         methods: {
-          onGREEN:function(){
+          greenonLED:function(){
             console.log("ON was called")
             axios.post('/greenpin_on', {
             pin:18,
@@ -125,7 +124,7 @@
           console.log(error);
            });
           },
-          offGREEN: function(){
+          greenoffLED: function(){
             console.log("Off was called")
             axios.post('/greenpin_off', {
             pin:18,
