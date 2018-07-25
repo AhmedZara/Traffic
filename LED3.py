@@ -62,23 +62,20 @@ def greenpin_off():
 
 @app.route('/leds_on', methods=['GET', 'POST'])
 def leds_on():
-    RED1=LED(15)
-    YELLOW1= LED(17)
-    GREEN1= LED(18)
     if request.method =='POST':
         body=request.get_json()
         for i in range(0,5):
-            RED1.on()
+            RED.on()
             time.sleep(3)
-            RED1.off()
+            RED.off()
             time.sleep(0.5)
-            YELLOW1.on()
+            YELLOW.on()
             time.sleep(2)
-            YELLOW1.off()
+            YELLOW.off()
             time.sleep(0.5)
-            GREEN1.on()
+            GREEN.on()
             time.sleep(2)
-            GREEN1.off()
+            GREEN.off()
             time.sleep(0.5)
         return jsonify({'status' : 'LEDs_ON(body[])'})
     else:
