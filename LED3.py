@@ -1,12 +1,12 @@
 from flask import Flask,request,render_template,jsonify
 from gpiozero import LED
-#from led_on import LED_ON
-#from led_off import LED_OFF
+import time
 
 app = Flask(__name__)
 RED=LED(15)
 YELLOW= LED(17)
 GREEN= LED(18)
+
 @app.route('/',methods=['GET'])
 def index():
         return render_template('index.html')
@@ -59,6 +59,31 @@ def greenpin_off():
         return jsonify({'status' : ' GREEN LED_OFF(body[])'})
     else:
         return jsonify({'status: unavailable'})
+
+@app.route('/leds_on', methods=['GET', 'POST'])
+def leds_on():
+        RED1=LED(15)
+        YELLOW1= LED(17)
+        GREEN1= LED(18)
+    if request.method == 'POST':
+        body=request.get_json()
+        for i in range(0,5):
+            RED1.on()
+            time.sleep(3)
+            RED1.off()
+            time.sleep(0.5)
+            YELLOW1.on()
+            time.sleep(2)
+            YELLOW1.off()
+            time.sleep(0.5)
+            GREEN1.on()
+            time.sleep(2)
+            GREEN1.off()
+            time.sleep(0.5)
+        return jsonify({'status' : 'LEDs_ON(body[])'})
+    else:
+        return jsonify({'status: unavailable'})
+
 if __name__ =='__main__':
     app.run(host='0.0.0.0', debug=True)
 
